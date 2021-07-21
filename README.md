@@ -1,2 +1,2 @@
 # gb.ru-AI
-AI faculty
+Learning at AI faculty https://gb.ru/geek_university/data-science
