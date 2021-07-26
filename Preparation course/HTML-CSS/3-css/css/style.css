@@ -1,0 +1,21 @@
+body {
+    background-color: #f8f8f8;
+}
+
+/*
+a{
+    color:dodgerblue;
+    font-size: 1.1em;
+    font-family: sans-serif;    
+}
+*/
+
+.menu li {
+    font-style: italic;
+    font-size: 20px;
+    list-style-type: none;
+}
+
+.menu li a {
+    color: dodgerblue;
+}
