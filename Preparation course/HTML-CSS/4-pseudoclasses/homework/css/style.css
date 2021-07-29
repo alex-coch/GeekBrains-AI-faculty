@@ -1,0 +1,68 @@
+body {
+    background-color: #f8f8f8;
+}
+
+h2 {
+    font-size: 18px;
+    font-weight: 400;
+    background-color: #eaeaea;
+}
+
+input, textarea {
+    height: 25px;
+    width: 300px;
+    color: #484343;
+    font-size: 16px;
+    margin: 5px;
+}
+
+/* menu */
+.header img{
+    width: 3%;
+}
+
+.menu li {
+    font-style: italic;
+    font-size: 20px;
+    list-style-type: none;
+}
+
+.menu li a {
+    color: dodgerblue;
+}
+
+.menu li a:hover {
+    color: skyblue;
+}
+
+/* pages */
+.short_description {
+    color: #707070;
+    font-size: 14px;
+    font-style: italic;
+    line-height: 16px;
+}
+
+.detail_description{
+    color: #484343;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
+
+.characteristics li {
+    font-style: oblique;
+    font-size: 15px;
+    list-style-image: url(../img/middle.png)
+}
+
+.characteristics li a {
+    color:cadetblue;
+}
+
+.product_image {
+    border: 1px solid;
+    border-color: #707070;
+}
+
