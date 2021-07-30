@@ -8,16 +8,25 @@ h2 {
     background-color: #eaeaea;
 }
 
-input, textarea {
+input,
+textarea {
     height: 25px;
     width: 300px;
     color: #484343;
     font-size: 16px;
     margin: 5px;
+    text-transform: capitalize;
 }
 
+.email:hover {
+    color: #101010;
+    background-color: #f0f0f0;
+}
+
+
 /* menu */
-.header img{
+
+.header img {
     width: 3%;
 }
 
@@ -35,7 +44,9 @@ input, textarea {
     color: skyblue;
 }
 
+
 /* pages */
+
 .short_description {
     color: #707070;
     font-size: 14px;
@@ -43,7 +54,7 @@ input, textarea {
     line-height: 16px;
 }
 
-.detail_description{
+.detail_description {
     color: #484343;
     font-size: 16px;
     font-weight: 400;
@@ -58,7 +69,12 @@ input, textarea {
 }
 
 .characteristics li a {
-    color:cadetblue;
+    color: cadetblue;
+}
+
+.first_letter::first-letter {
+    font-size: 150%;
+    color: #707070;
 }
 
 .product_image {
@@ -66,3 +82,19 @@ input, textarea {
     border-color: #707070;
 }
 
+.product_image:hover {
+    border: 1px solid;
+    border-color: #f8f8f8;
+}
+
+.some_table {
+    border-style: solid;
+    border-color: #707070;
+    border-width: thin;
+    text-align: center;
+}
+
+.some_table tr:nth-child(1) td {
+    background-color: #909090;
+    height: 2.5em;
+}
