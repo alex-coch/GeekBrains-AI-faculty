@@ -1,0 +1,4 @@
+https://caniuse.com/
+https://tinypng.com/
+https://validator.w3.org/
+https://css3generator.com/
