@@ -1,0 +1,1 @@
+["firm_1", "firm_2", "firm_3", {"average_profit": 1666.67}]
