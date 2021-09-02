@@ -9,3 +9,35 @@ https://docs.google.com/presentation/d/1hiNQxJ-gSdh-sgAHvSBJEAt5dUjP6lPjsu0MkhoC
 
 handbook
 https://docs.google.com/document/d/1OSkahJuuUEVwj6ZApsl5QaDmZiBOriTRAxNKLobiVKs/edit
+
+До начала первого урока и во время обучения на этом курсе рекомендуем пройти:
+
+«Основы программирования» в видеоформате: https://geekbrains.ru/courses/754 или в интерактивном формате (если у вас есть подготовка).
+
+Видеокурс «Основы языка Python»: https://geekbrains.ru/courses/950 (дополняет текущий курс).
+
+Мы принимаем практические задания с помощью Git, т. к. это обязательный инструмент программиста. Вы можете найти инструкцию по сдаче практических работ по ссылке (https://docs.google.com/document/d/1RAT_ukE39iOfbz1xa39QXae2hBUEZ4U6Fko_wFDdrsM/edit) и познакомиться с Git подробнее на курсе «Git. Базовый курс»: https://geekbrains.ru/courses/1117. Если Git вам пока не знаком, задания на первых порах можно будет сдавать в виде архива.
+
+Также рекомендую вам заранее ознакомиться с методичкой к первому уроку, которая находится в разделе Материалы.
+
+Для дополнительного чтения по курсу рекомендуется следующая книга: Лутц М. «Изучаем Python».
+
+Мы подготовили видео с инструкцией по настройке среды перед вебинаром:
+https://www.youtube.com/watch?v=j5VeKrv0sIo
+настройка Windows для Python
+?
+https://www.youtube.com/watch?v=LvjfsQ_eFaE
+настройка Ubuntu для Python
+?
+https://www.youtube.com/watch?v=RVNxYB7ePeU
+настройка MacOS для Python
+?
+?
+Перед вебинаром обязательно скачать и установить:
+https://www.python.org/downloads/ версия 3.8 (обязательно не ниже 3.6). На Linux, Ubuntu должна быть уже установлена.
+При установке проверить, что выбрана галочка напротив PATH!!!!!
+• Код будем писать в IDE:
+http://www.jetbrains.com/pycharm/ версия Community (бесплатная).
+• Проверить, что python установился (Windows) - в командной строке:
+python --version
+Если ошибка - значит проверяем переменную PATH и наличие обновлений в ОС.
