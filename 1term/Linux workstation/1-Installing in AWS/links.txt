@@ -1,0 +1,25 @@
+webinar
+https://gbcdn.mrgcdn.ru/uploads/record/143750/attachment/1364d834d5be7dc530782597b108254b.mp4
+
+presentation
+https://docs.google.com/presentation/d/1AAc_V4HBtYuWo86KnENzo4ke-1jgf-1h9ti2-hnvHYM/edit
+
+booklet
+https://docs.google.com/document/d/1_cZs0B0t4deyXzhbMOINJ5sevjhwzUErX4X--WIozKc/edit
+
+Ссылки для скачивания:
+* VirtualBox (при необходимости) скачиваем тут: https://www.virtualbox.org/wiki/Downloads
+* Готовая виртуальная машина с Ubuntu 16: https://yadi.sk/d/bS5Wm135JQYRkQ (пароль от учетки виртуальной машины: master)
+* MobaXTerm (SSH-клиент): https://mobaxterm.mobatek.net/download.html
+
+Рекомендуемая литература:
+* «Linux. Библия пользователя»
+* «Командная строка Linux». Шоттс Уильям
+
+the first necessary commands
+sudo apt update
+sudo apt install perl make gcc -y
+sudo apt upgrade -y
+sudo apt install openssh-server -y
+sudo apt install mc -y
+ 

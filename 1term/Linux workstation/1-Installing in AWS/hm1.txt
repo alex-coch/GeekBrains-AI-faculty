@@ -1,0 +1,27 @@
+Setting up mc (3:4.8.24-2ubuntu1) ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for mime-support (3.64ubuntu1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.2) ...
+ubuntu@ip-172-31-13-102:~$ mc
+
+ubuntu@ip-172-31-13-102:~$ uname
+Linux
+ubuntu@ip-172-31-13-102:~$ uname -a
+Linux ip-172-31-13-102 5.4.0-1045-aws #47-Ubuntu SMP Tue Apr 13 07:02:25 UTC 2021 x86_64 x86_64 x86_64 GNU/Linux
+ubuntu@ip-172-31-13-102:~$ hostnamectl
+   Static hostname: ip-172-31-13-102
+         Icon name: computer-vm
+           Chassis: vm
+        Machine ID: 0c96fd486b7c42869cf062e58a34cf48
+           Boot ID: b90ad2781ad441e5891cac40960996df
+    Virtualization: xen
+  Operating System: Ubuntu 20.04.3 LTS
+            Kernel: Linux 5.4.0-1045-aws
+      Architecture: x86-64
+ubuntu@ip-172-31-13-102:~$ lsb_release -a
+No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 20.04.3 LTS
+Release:        20.04
+Codename:       focal
+ubuntu@ip-172-31-13-102:~$
