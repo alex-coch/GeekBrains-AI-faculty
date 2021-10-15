@@ -1,0 +1,37 @@
+1
+sudo apt-get update
+sudo apt-get install mysql-server
+systemctl status mysql
+sudo nano ~/.my.cnf
+[client]
+host=localhost
+user=root
+password=PASSWORD
+socket=/var/run/mysqld/mysqld.sock
+
+sudo chown root:root ~/.my.cnf
+sudo chmod 400 ~/.my.cnf
+mysql
+
+2
+DROP DATABASE example;
+CREATE DATABASE example;
+SHOW DATABASES;
+USE example;
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+	id SERIAL COMMENT 'Primary key',
+	name VARCHAR(255) COMMENT 'Username'
+);
+DESCRIBE users;
+SHOW CREATE TABLE users;
+
+3
+mysqldump example > dump.sql
+CREATE DATABASE sample;
+USE sample;
+SOURCE dump.sql;
+SHOW TABLES;
+
+4
+mysqldump mysql --skip-opt -–where=’1 limit 100’ help_keyword > out.sql
