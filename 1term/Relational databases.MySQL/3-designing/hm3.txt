@@ -1,0 +1,36 @@
+DROP TABLE IF EXISTS statictics;
+CREATE TABLE statictics (
+	id SERIAL, 
+	user_id BIGINT UNSIGNED NOT NULL,
+	ip_addr CHAR(17),
+    	created_at DATETIME DEFAULT NOW(), 
+    	FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE RESTRICT, 
+	INDEX users_idx(user_id)
+) COMMENT 'ip statictics';
+
+DROP TABLE IF EXISTS subscribtions;
+CREATE TABLE subscribtions (
+	id SERIAL, 
+	user_id BIGINT UNSIGNED NOT NULL,
+	communities_id BIGINT UNSIGNED NOT NULL,
+    	created_at DATETIME DEFAULT NOW(), 
+    	FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE RESTRICT, 
+    	FOREIGN KEY (communities_id) REFERENCES communities(id) ON UPDATE CASCADE ON DELETE RESTRICT, 
+	INDEX users_idx(user_id),
+	UNIQUE KEY (user_id, communities_id)
+);
+
+DROP TABLE IF EXISTS posts;
+CREATE TABLE posts (
+	id SERIAL, 
+	user_id BIGINT UNSIGNED NOT NULL,
+	text_body TEXT NOT NULL,
+	id_media BIGINT UNSIGNED,
+    	created_at DATETIME DEFAULT NOW(), 
+	updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP,
+	communities_id BIGINT UNSIGNED,
+	FULLTEXT KEY text_idx(text_body),
+    	FOREIGN KEY (user_id) REFERENCES users(id) ON UPDATE CASCADE ON DELETE RESTRICT, 
+    	FOREIGN KEY (communities_id) REFERENCES communities(id) ON UPDATE CASCADE ON DELETE RESTRICT, 
+	INDEX users_idx(user_id)
+)  COMMENT 'users posts';
