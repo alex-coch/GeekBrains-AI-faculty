@@ -1,0 +1,29 @@
+/*i.*/
+INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`, `password_hash`, `phone`) VALUES (NULL, 'a', 'b', 'a@a.a', '123', '456');
+INSERT INTO `media_types` (`id`, `name`, `created_at`, `updated_at`) VALUES ('130', 'jpg', CURRENT_TIMESTAMP, NULL);
+INSERT INTO `media` (`id`, `media_type_id`, `user_id`, `body`, `filename`, `size`, `metadata`, `created_at`, `updated_at`) VALUES ('1', '130', '1', '123', '1.jpg', '1', '{"name":"mkyong.com","messages":["msg 1","msg 2","msg 3"],"age":100}', CURRENT_TIMESTAMP, NULL)
+INSERT INTO `profiles` (`user_id`, `gender`, `birthday`, `photo_id`, `created_at`, `hometown`) VALUES ('1', 'm', '2021-10-20', '1', CURRENT_TIMESTAMP, 'Izhevsk')
+INSERT INTO `messages` (`id`, `from_user_id`, `to_user_id`, `body`, `created_at`) VALUES ('1', '1', '1', 'test', CURRENT_TIMESTAMP);
+INSERT INTO `friend_requests` (`initiator_user_id`, `target_user_id`, `status`, `requested_at`, `updated_at`) VALUES ('1', '1', 'requested', CURRENT_TIMESTAMP, NULL);
+INSERT INTO `communities` (`id`, `name`, `admin_user_id`) VALUES ('1', 'test comm', '1');
+INSERT INTO `users_communities` (`user_id`, `community_id`) VALUES ('1', '1');
+INSERT INTO `likes` (`id`, `user_id`, `media_id`, `created_at`) VALUES ('1', '1', '1', CURRENT_TIMESTAMP);
+INSERT INTO `photo_albums` (`id`, `name`, `user_id`) VALUES ('1', 'test album', '1');
+INSERT INTO `photos` (`id`, `album_id`, `media_id`) VALUES ('1', '1', '1');
+
+
+
+/*ii.*/
+SELECT DISTINCT firstname FROM users ORDER  BY firstname LIMIT 50
+
+/*iii. */
+ALTER TABLE users  
+	ADD is_active ENUM('true', 'false') DEFAULT 'true',
+	ADD age TINYINT UNSIGNED NOT NULL;
+UPDATE users SET is_active='false' WHERE age<18;
+
+/*iv.*/
+DELETE FROM messages WHERE created_at>NOW();
+
+/*v.*/
+/*Billing system*/
