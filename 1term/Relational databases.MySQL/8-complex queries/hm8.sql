@@ -1,0 +1,2 @@
+/*1*/
+SELECT (SELECT CONCAT(firstname, ' ', lastname) FROM users WHERE id = from_user_id), from_user_id, count(*) AS amount FROM `messages` JOIN users ON users.id=messages.from_user_id OR users.id=messages.to_user_id WHERE to_user_id=1 GROUP BY from_user_id ORDER BY amount DESC LIMIT 1 
