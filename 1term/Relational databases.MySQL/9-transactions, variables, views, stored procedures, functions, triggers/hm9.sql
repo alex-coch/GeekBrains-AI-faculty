@@ -44,3 +44,37 @@ BEGIN
     END CASE;
 END //
 SELECT hello() //
+
+-- 2
+delimiter $$
+DROP TRIGGER IF EXISTS foo $$
+create trigger foo before insert on products
+for each row
+begin
+	IF (new.name IS NULL) AND (new.description IS NULL) then 
+    	signal sqlstate '45000';
+    END IF;
+END $$
+
+-- 3
+DELIMITER $$
+DROP FUNCTION IF EXISTS FIBONACCI $$
+CREATE FUNCTION `FIBONACCI`(p INTEGER(11))
+RETURNS int(11)
+NOT DETERMINISTIC
+NO SQL
+SQL SECURITY DEFINER
+BEGIN
+set @i:=1;
+set @f1:=1;
+set @f2:=0;
+set @f3:=0;
+WHILE @i <= p DO
+	set @f3:=@f1+@f2; /* next value */
+    set @f1:=@f2;	/* rotate f1 */
+    set @f2:=@f3;	/* rotate f2 */
+    SET @i =  @i + 1;
+END WHILE;
+RETURN @f3;
+END $$
+SELECT FIBONACCI(10) $$
