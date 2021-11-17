@@ -1,3 +1,4 @@
+-- Транзакции, переменные, представления
 -- 1
 START TRANSACTION; 
 INSERT INTO sample.users SELECT * FROM shop.users WHERE id=1;
@@ -15,7 +16,8 @@ prepare stmt from "delete from users order by created_at limit ?";
 set @cnt=(select count(1)-5 from users);
 execute stmt using @cnt;
 
--- 1 ?
+-- Администрирование MySQL
+-- 1 
 DROP USER IF EXISTS 'shop'@'localhost';
 DROP USER IF EXISTS 'shop_read'@'localhost';
 DELETE FROM mysql.user WHERE user LIKE 'shop%';
@@ -26,8 +28,7 @@ CREATE USER 'shop_read'@'localhost' IDENTIFIED BY 'pass2';
 GRANT ALL ON shop.* TO 'shop';
 GRANT SELECT ON shop.* TO 'shop_read';
 
---2?
-
+-- Хранимые процедуры и функции, триггеры
 --1 
 DELIMITER //
 DROP FUNCTION IF EXISTS hello //
