@@ -1,0 +1,5 @@
+notebook Numpy
+https://colab.research.google.com/drive/13raG-UUGjOnwiY7f3ehjgP1IjLlLE3T9
+
+notebook Pandas
+https://colab.research.google.com/drive/1ECunzNF2-XX69-Q4ovKjwT84icX-7-sw
