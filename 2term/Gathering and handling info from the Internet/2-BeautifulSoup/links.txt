@@ -1,0 +1,10 @@
+webinar
+https://gbcdn.mrgcdn.ru/uploads/record/176328/attachment/8ac03f2d1451c9b0966dc66a232a3d9c.mp4
+
+booklet
+https://docs.google.com/document/d/1mFxcdjP0NG6cFWDgNsPfzZxt_Nd9D0wWuJCf4ES-fJk/edit
+
+CSS selectors
+https://msiter.ru/tutorials/css-nachalnogo-urovnya/selektory-svoistva-znacheniya
+https://naikom.ru/blog/archives/2306
+https://developer.mozilla.org/ru/docs/Web/CSS/CSS_Selectors
