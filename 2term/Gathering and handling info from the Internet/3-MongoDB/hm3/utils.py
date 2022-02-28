@@ -6,7 +6,7 @@ import re
 import requests
 
 
-class ScrapingJob():
+class Job():
 
     def __init__(self, mongodb_uri, db_name, collection_name):
         self.headers = {
@@ -19,14 +19,15 @@ class ScrapingJob():
         self.collection = self.db[collection_name]
 
     def print_salary(self, salary):
-        objects = self.collection.find({'salary_max': {'$gt': salary}})
-        for obj in objects:
-            pprint(obj)
+        pass
+        # objects = self.collection.find({'salary_max': {'$gt': salary}})
+        # for obj in objects:
+        #     pprint(obj)
 
     def search_job(self, vacancy):
-        self._parser_hh(vacancy)
+        self._parser(vacancy)
 
-    def _parser_hh(self, vacancy):
+    def _parser(self, vacancy):
         params = {
             'text': vacancy, \
             'search_field': 'name', \
