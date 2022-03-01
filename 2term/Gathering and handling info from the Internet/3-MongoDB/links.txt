@@ -1,0 +1,11 @@
+webinar
+https://gbcdn.mrgcdn.ru/uploads/record/176973/attachment/db8491f8443f1ed237bec2d6a9d6c4d1.mp4
+
+booklet
+https://docs.google.com/document/d/1OvtCj78OpTQDOmfoTGHMIZ2x-UonCT-PYiyRJ9--IO8/edit
+
+compound statement
+https://docs.python.org/3/reference/compound_stmts.html
+
+pymongo tutorial
+https://pymongo.readthedocs.io/en/stable/tutorial.html

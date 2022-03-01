@@ -37,7 +37,7 @@ class Job():
 
         html = self._get_html(self.link_hh, params)
 
-        last_page = self._get_last_page_hh(html)
+        last_page = self._get_last_page(html)
 
         for page in range(0, last_page):
             params['page'] = page
@@ -49,90 +49,55 @@ class Job():
                 vacancy_items = parsed_html.find('div', {'data-qa': 'vacancy-serp__results'}) \
                                             .find_all('div', {'class': 'vacancy-serp-item'})
                 for item in vacancy_items:
-                    vacancy = self._parser_item_hh(item)
+                    vacancy = self._parser_item(item)
 
                     if self._is_exists('vacancy_link', vacancy['vacancy_link']):
                         self.collection.update_one({'vacancy_link': vacancy['vacancy_link']}, {'$set': vacancy})
                     else:
                         self.collection.insert_one(vacancy)
 
-    def _parser_item_hh(self, item):
+    def _parser_item(self, item):
         vacancy_data = {}
 
-        # vacancy_name
-        vacancy_name = item.find('div', {'class': 'resume-search-item__name'}) \
-                            .getText() \
-                            .replace(u'\xa0', u' ')
+        it = item.find('a', {'class': 'bloko-link'})
+        vacancy_date['vacancy_name'] = it.getText().replace(u'\xa0', u' ')
+        vacancy_date['company_name'] = item.find('a', {'class': 'bloko-link bloko-link_kind-tertiary'}) \
+            .getText().replace(u'\xa0', u' ')
 
-        vacancy_data['vacancy_name'] = vacancy_name
-
-        # company_name
-        company_name = item.find('div', {'class': 'vacancy-serp-item__meta-info'}) \
-                            .getText() \
-                            .replace(u'\xa0', u' ')
-
-        vacancy_data['company_name'] = company_name
-
-        # city
-        city = item.find('span', {'class': 'vacancy-serp-item__meta-info'}) \
-                    .getText() \
-                    .split(', ')[0]
-
-        vacancy_data['city'] = city
-
-        #metro station
-        metro_station = item.find('span', {'class': 'vacancy-serp-item__meta-info'}).findChild()
-
-        if not metro_station:
-            metro_station = None
+        salary = item.find('span', {'data-qa': 'vacancy-serp__vacancy-compensation'})
+        if not salary:
+            salary_min = None
+            salary_max = None
+            salary_currency = None
         else:
-            metro_station = metro_station.getText()
-
-        vacancy_data['metro_station'] = metro_station
-
-        #salary
-        salary = item.find('div', {'class': 'vacancy-serp-item__compensation'})
-
-        salary_min = None
-        salary_max = None
-        salary_currency = None
-
-        if salary:
-
             salary = salary.getText() \
-                            .replace(u'\xa0', u'')
-
-            salary = re.split(r'\s|-', salary)
-
-            if salary[0] == 'до':
+                .replace(u'\xa0', u'')
+            salary = re.split(r'\s|-|вЂ“', salary)
+            for indx, item in enumerate(salary):
+                if item == '000':
+                    salary[indx - 1] += salary[indx]
+                    del (salary[indx])
+            salary = [i for i in salary if i != '']
+            # print(salary)
+            if salary[0] == 'РґРѕ':
+                salary_min = None
                 salary_max = int(salary[1])
-            elif salary[0] == 'от':
+            elif salary[0] == 'РѕС‚':
                 salary_min = int(salary[1])
+                salary_max = None
             else:
                 salary_min = int(salary[0])
                 salary_max = int(salary[1])
+            salary_currency = salary[2]
+        vacancy_date['salary_min'] = salary_min
+        vacancy_date['salary_max'] = salary_max
+        vacancy_date['salary_currency'] = salary_currency
 
-            salary_currency = salary[-1]
-            salary_currency = self._get_name_currency(salary_currency)
+        vacancy_date['vacancy_link'] = it.attrs["href"]
+        vacancy_date['site'] = 'hh.ru'
+        return vacancy_date
 
-        vacancy_data['salary_min'] = salary_min
-        vacancy_data['salary_max'] = salary_max
-        vacancy_data['salary_currency'] = salary_currency
-
-        # vacancyId
-        vacancy_json = json.loads(item.find('script', {'data-name': 'HH/VacancyResponsePopup/VacancyResponsePopup'})['data-params'])
-
-        vacancy_id = vacancy_json['vacancyId']
-
-        # link
-        vacancy_data['vacancy_link'] = f'https://hh.ru/vacancy/{vacancy_id}'
-
-        # site
-        vacancy_data['site'] = 'hh.ru'
-
-        return vacancy_data
-
-    def _get_last_page_hh(self, html):
+    def _get_last_page(self, html):
         parsed_html = self._get_parsed_html(html)
 
         if parsed_html:
