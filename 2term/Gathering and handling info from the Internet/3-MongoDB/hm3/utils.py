@@ -20,9 +20,9 @@ class Job():
 
     def print_salary(self, salary):
         pass
-        # objects = self.collection.find({'salary_max': {'$gt': salary}})
-        # for obj in objects:
-        #     pprint(obj)
+        objects = self.collection.find({'salary_max': {'$gt': salary}})
+        for obj in objects:
+            pprint(obj)
 
     def search_job(self, vacancy):
         self._parser(vacancy)
