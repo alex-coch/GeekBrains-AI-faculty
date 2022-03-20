@@ -65,3 +65,4 @@ db = mongodb['news']
 collection = db['news_db']
 for item in news:
     collection.insert_one(item)
+
