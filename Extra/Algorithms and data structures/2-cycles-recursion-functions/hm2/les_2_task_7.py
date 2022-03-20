@@ -5,7 +5,7 @@
 
 def first(n):
     if n == 1:
-        return n
+        return 1
     elif n > 0:
         return n + first(n-1)
 
@@ -16,7 +16,7 @@ def second(n):
 
 n = 1
 
-while True:
+while n < 999:
     if first(n) == second(n):
         print(f'Для n={n} - True')
     else:
