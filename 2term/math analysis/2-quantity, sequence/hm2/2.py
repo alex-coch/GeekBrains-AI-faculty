@@ -32,19 +32,20 @@ unc1 = a.union(c)
 unc2 = b | c
 print(unc1, unc2)
 
-inc = a.intersection(c)
-dfc = a.difference(c)
-bdc = c.difference(a)
-sdc = a.symmetric_difference(c)
-# print(unc, inc, dfc, bdc, sdc)
+inc1 = a.intersection(c)
+inc2 = b & c
+print(inc1, inc2)
 
-# ��������� b � c
-buc = b | c
-bic = b & c
-bdc = b - c
-cdb = c - b
-badc = b ^ c
+dfc1 = a.difference(c)
+dfc2 = b - c
+print(dfc1, dfc2)
 
 
-# print(asdb)
-# print(asdb1)
+bdc1 = c.difference(a)
+bdc2 = c - b
+print(bdc1, bdc2)
+
+
+sdc1 = a.symmetric_difference(c)
+sdc2 = b ^ c
+print(sdc1, sdc2)
