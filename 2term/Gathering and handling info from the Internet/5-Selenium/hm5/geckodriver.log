@@ -9,14 +9,9 @@
 console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Admin\\AppData\\Local\\Temp\\rust_mozprofileEi8JpW\\search.json.mozlz4", (void 0)))
 1647783125230	Marionette	INFO	Listening on port 36522
 1647783125354	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-1647783607492	geckodriver	INFO	Listening on 127.0.0.1:37035
-1647783610563	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Admin\\AppData\\Local\\Temp\\rust_mozprofilesHHW01"
-1647783611235	Marionette	INFO	Marionette enabled
-console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\Admin\\AppData\\Local\\Temp\\rust_mozprofilesHHW01\\search.json.mozlz4", (void 0)))
-1647783619090	Marionette	INFO	Listening on port 37043
-1647783619354	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
-1647783830838	Marionette	INFO	Stopped listening on port 37043
-JavaScript error: resource:///modules/Interactions.jsm, line 209: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
+JavaScript error: https://api.flocktory.com/v2/loader.js?site_id=399, line 1: Error: JSONP request to https://api.flocktory.com/u_shaman/setup-api.js?body=%7B%22siteId%22%3A%22399%22%2C%22utm%22%3A%7B%22source%22%3A%22%22%2C%22medium%22%3A%22%22%2C%22campaign%22%3A%22%22%2C%22term%22%3A%22%22%2C%22content%22%3A%22%22%7D%2C%22site-session-id%22%3A%2217b8b693-5683-4e6a-8688-8d548c6b00d7-9%22%7D timed out
+JavaScript error: https://api.flocktory.com/v2/loader.js?site_id=399, line 1: Error: JSONP request to https://api.flocktory.com/u_shaman/setup-api.js?body=%7B%22siteId%22%3A%22399%22%2C%22utm%22%3A%7B%22source%22%3A%22%22%2C%22medium%22%3A%22%22%2C%22campaign%22%3A%22%22%2C%22term%22%3A%22%22%2C%22content%22%3A%22%22%7D%2C%22site-session-id%22%3A%2217b8b693-5683-4e6a-8688-8d548c6b00d7-9%22%7D timed out
+R_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIUserIdleService.removeIdleObserver]
 1647783835257	geckodriver	INFO	Listening on 127.0.0.1:37246
 1647783838299	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "-no-remote" "-profile" "C:\\Users\\Admin\\AppData\\Local\\Temp\\rust_mozprofileVbuv98"
 1647783838976	Marionette	INFO	Marionette enabled
