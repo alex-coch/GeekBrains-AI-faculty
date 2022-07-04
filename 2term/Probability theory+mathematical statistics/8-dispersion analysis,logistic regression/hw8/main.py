@@ -10,7 +10,9 @@ n3 = len(y3)
 
 Fn = stats.f_oneway(y1, y2, y3)[0]
 Fcrit=3.337  # regarding the Fisher's table
-print('n=',n1+n2+n3,  'Различие между группами статистически значимое' \
+n = n1+n2+n3
+k = 3
+print('n=',n, Fn,  'Различие между группами статистически значимое' \
     if Fn > Fcrit else 'Различие между группами статистически не значимое')
 
 y1_mean = np.mean(y1)
@@ -33,3 +35,10 @@ s2_res = np.sum((y1 - y1_mean)**2) + np.sum((y2 - y2_mean)**2) + np.sum((y3 - y3
 # квадратов отклонений
 print(s2_res)
 print(s2_f + s2_res, s2)
+sigma2_general = s2 / (n - 1)  # общая дисперсия
+sigma2_f = s2_f / (k - 1)  # факторная дисперсия
+sigma2_residual = s2_res / (n - k)  # остаточная дисперсия
+F_h = sigma2_f / sigma2_residual
+print(F_h)
+print('Различие между группами статистически значимое' \
+    if F_h > Fcrit else 'Различие между группами статистически не значимое')
