@@ -1,0 +1,134 @@
+import os
+import datetime
+
+
+class Logger:
+    _shared_state = {}
+    day = 0
+    month = 0
+    year = 0
+    hour = 0
+    minute = 0
+    second = 0
+    path = None
+    current_file = None
+
+    def __new__(cls, *args, **kwargs):
+        if not hasattr(cls, 'instance'):
+            cls.instance = super(Logger, cls).__new__(cls)
+        cls.instance.__dict__ = cls._shared_state
+        return cls.instance
+
+    def __init__(self, path='.'):
+        Logger.fill_date()
+        Logger.path = path
+        if path != '.':
+            if not os.path.exists(path):
+                os.makedirs(f"./{path}")
+            Logger.path = f'./{path}'
+        Logger.create_new_log_file()
+
+    @classmethod
+    def create_new_log_file(cls):
+        Logger.current_file = f"log_{Logger.day}.{Logger.month}.{Logger.year}.log"
+        if not os.path.exists(Logger.full_file_path()):
+            with open(Logger.full_file_path(), "w"):
+                pass
+
+    @staticmethod
+    def today():
+        current_date = datetime.datetime.now()
+        return {'day': current_date.day,
+                'month': current_date.month,
+                'year': current_date.year,
+                'hour': current_date.hour,
+                'minute': current_date.minute,
+                'second': current_date.second}
+
+    @classmethod
+    def fill_date(cls):
+        current_date = cls.today()
+        cls.day = current_date.get('day')
+        cls.month = current_date.get('month')
+        cls.year = current_date.get('year')
+        cls.hour = current_date.get('hour')
+        cls.minute = current_date.get('minute')
+        cls.second = current_date.get('second')
+
+    @classmethod
+    def full_file_path(cls):
+        return cls.path + '/' + cls.current_file
+
+    @classmethod
+    def check_day(cls):
+        if cls.day != cls.today().get('day'):
+            return True
+
+    def write_log(self, event):
+        if Logger.check_day():
+            Logger.fill_date()
+            Logger.create_new_log_file()
+        with open(self.full_file_path(), 'a', encoding='UTF-8') as f:
+            self.fill_date()
+            f.write(f'[{Logger.hour}:{Logger.minute}:{Logger.second}] {event} \n')
+
+    def clear_log(self):
+        with open(self.full_file_path(), 'w'):
+            pass
+
+    def get_logs(self):
+        with open(self.full_file_path(), 'r', encoding="UTF-8") as f:
+            return f.readlines()
+
+    def get_last_event(self):
+        with open(self.full_file_path(), 'r', encoding="UTF-8") as f:
+            return f.readlines()[-1]
+
+    @classmethod
+    def get_all_logs(cls):
+        log_files = []
+        for file in os.listdir(cls.path):
+            if file.startswith('log_'):
+                log_files.append(file)
+        return log_files
+
+
+l = Logger("path")
+l2 = Logger(path="path2")
+l3 = Logger(path="path3")
+
+print()
+
+from dataclasses import dataclass
+
+
+@dataclass(order=True)
+class Date:
+    day: int
+    month: int
+    year: int
+    hour: int
+    minute: int
+    second: int
+
+
+
+d1 = Date(13, 1, 2022, 6, 7, 8)
+d2 = Date(14, 1, 2022, 6, 7, 8)
+
+print(d1 < d2)
+
+
+
+a = 5
+b = 0
+
+try:
+    print(a+b)
+except:
+    pass
+finally:
+    print('блок отработал')
+
+print('какой-то код дальше')
+
