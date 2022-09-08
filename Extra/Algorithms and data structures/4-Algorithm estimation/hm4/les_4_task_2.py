@@ -2,6 +2,12 @@ from itertools import compress
 from math import ceil
 from time import time
 
+"""
+Outcomes:
+Function 'primes' executed in 2.6940s
+Function 'sieve' executed in 0.0550s
+"""
+
 
 def timer_func(func):
     def wrap_func(*args, **kwargs):
