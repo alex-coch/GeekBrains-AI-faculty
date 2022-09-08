@@ -1,74 +1,72 @@
+from itertools import compress
+from math import ceil
+from time import time
+
+
+def timer_func(func):
+    def wrap_func(*args, **kwargs):
+        t1 = time()
+        result = func(*args, **kwargs)
+        t2 = time()
+        print(f'Function {func.__name__!r} executed in {(t2 - t1):.4f}s')
+        return result
+
+    return wrap_func
+
+
 """
-Сложность алгоритма "решето Эратосфена" составляет O(n*log(n))
+РЎР»РѕР¶РЅРѕСЃС‚СЊ Р°Р»РіРѕСЂРёС‚РјР° "СЂРµС€РµС‚Рѕ Р­СЂР°С‚РѕСЃС„РµРЅР°" СЃРѕСЃС‚Р°РІР»СЏРµС‚ O(n*log(n))
 """
+
+
+@timer_func
 def primes(n):
-    a = [0] * n # создание массива с n количеством элементов
-    for i in range(n): # заполнение массива ...
-        a[i] = i # значениями от 0 до n-1
-     
-    # вторым элементом является единица, которую не считают простым числом
-    # забиваем ее нулем.
+    a = [0] * n  # СЃРѕР·РґР°РЅРёРµ РјР°СЃСЃРёРІР° СЃ n РєРѕР»РёС‡РµСЃС‚РІРѕРј СЌР»РµРјРµРЅС‚РѕРІ
+    for i in range(n):  # Р·Р°РїРѕР»РЅРµРЅРёРµ РјР°СЃСЃРёРІР° ...
+        a[i] = i  # Р·РЅР°С‡РµРЅРёСЏРјРё РѕС‚ 0 РґРѕ n-1
+
+    # РІС‚РѕСЂС‹Рј СЌР»РµРјРµРЅС‚РѕРј СЏРІР»СЏРµС‚СЃСЏ РµРґРёРЅРёС†Р°, РєРѕС‚РѕСЂСѓСЋ РЅРµ СЃС‡РёС‚Р°СЋС‚ РїСЂРѕСЃС‚С‹Рј С‡РёСЃР»РѕРј
+    # Р·Р°Р±РёРІР°РµРј РµРµ РЅСѓР»РµРј.
     a[1] = 0
-     
-    m = 2 # замена на 0 начинается с 3-го элемента (первые два уже нули)
-    while m < n: # перебор всех элементов до заданного числа
-        if a[m] != 0: # если он не равен нулю, то
-            j = m * 2 # увеличить в два раза (текущий элемент простое число)
+
+    m = 2  # Р·Р°РјРµРЅР° РЅР° 0 РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ 3-РіРѕ СЌР»РµРјРµРЅС‚Р° (РїРµСЂРІС‹Рµ РґРІР° СѓР¶Рµ РЅСѓР»Рё)
+    while m < n:  # РїРµСЂРµР±РѕСЂ РІСЃРµС… СЌР»РµРјРµРЅС‚РѕРІ РґРѕ Р·Р°РґР°РЅРЅРѕРіРѕ С‡РёСЃР»Р°
+        if a[m] != 0:  # РµСЃР»Рё РѕРЅ РЅРµ СЂР°РІРµРЅ РЅСѓР»СЋ, С‚Рѕ
+            j = m * 2  # СѓРІРµР»РёС‡РёС‚СЊ РІ РґРІР° СЂР°Р·Р° (С‚РµРєСѓС‰РёР№ СЌР»РµРјРµРЅС‚ РїСЂРѕСЃС‚РѕРµ С‡РёСЃР»Рѕ)
             while j < n:
-                a[j] = 0 # заменить на 0
-                j = j + m # перейти в позицию на m больше
+                a[j] = 0  # Р·Р°РјРµРЅРёС‚СЊ РЅР° 0
+                j = j + m  # РїРµСЂРµР№С‚Рё РІ РїРѕР·РёС†РёСЋ РЅР° m Р±РѕР»СЊС€Рµ
         m += 1
-     
-    # вывод простых чисел на экран (может быть реализован как угодно)
+
+    # РІС‹РІРѕРґ РїСЂРѕСЃС‚С‹С… С‡РёСЃРµР» РЅР° СЌРєСЂР°РЅ (РјРѕР¶РµС‚ Р±С‹С‚СЊ СЂРµР°Р»РёР·РѕРІР°РЅ РєР°Рє СѓРіРѕРґРЅРѕ)
     b = []
     for i in a:
         if a[i] != 0:
             b.append(a[i])
-     
+
     del a
     return b
 
+
 """
-Сложность алогритма "Решето Аткина" составляет O(n)
+РЎР»РѕР¶РЅРѕСЃС‚СЊ Р°Р»РѕРіСЂРёС‚РјР° "Р РµС€РµС‚Рѕ РђС‚РєРёРЅР°" СЃРѕСЃС‚Р°РІР»СЏРµС‚ O(n)
 """
-def atkins(limit):
-    primes = [False] * limit
-    sqrt_limit = int( math.sqrt( limit ) )
-
-    x_limit = int( math.sqrt( ( limit + 1 ) / 2 ) )
-    for x in xrange( 1, x_limit ):
-        xx = x*x
-
-        for y in xrange( 1, sqrt_limit ):
-            yy = y*y
-
-            n = 3*xx + yy
-            if n <= limit and n%12 == 7:
-                primes[n] = not primes[n]
-
-            n += xx
-            if n <= limit and n%12 in (1,5):
-                primes[n] = not primes[n]
-
-            if x > y:
-                n -= xx + 2*yy
-                if n <= limit and n%12 == 11:
-                    primes[n] = not primes[n]
-
-    for n in xrange(5,limit):
-        if primes[n]:
-            for k in range(n*n, limit, n*n):
-                primes[k] = False
-
-    return [2,3] + filter(primes.__getitem__, xrange(5, limit))
 
 
+@timer_func
+def sieve(limit):
+    if limit < 2:
+        return []
 
-def primes2(N):
-  """Возвращает все простые от 2 до N"""
-  sieve = set(range(2, N))
-  for i in range(2, int(math.sqrt(N))):
-    if i in sieve:
-      sieve -= set(range(2*i, N, i))
-  return sieve
-print primes(10)
+    limit += 1  # Preincrement `limit` so sieve is inclusive, unlike `range`.
+    primes = [True] * limit
+    for base in range(2, int(limit ** 0.5 + 1)):
+        if primes[base]:
+            primes[base * 2:limit:base] = [False] * (ceil(limit / base) - 2)
+
+    primes[0] = primes[1] = False
+    return compress(range(limit), primes)
+
+
+primes(1000000)
+sieve(1000000)
