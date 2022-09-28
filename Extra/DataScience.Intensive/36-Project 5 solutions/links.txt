@@ -1,0 +1,4 @@
+webinar
+https://gbcdn.mrgcdn.ru/uploads/record/213255/attachment/ba09d2390192fbe94ecf9fdfcff61191.mp4
+
+https://colab.research.google.com/drive/1xgp50AUIVLlQSUWB9rSBSrOkFnlQNybQ?usp=sharing - обучаем голосового помощника(wake word)
