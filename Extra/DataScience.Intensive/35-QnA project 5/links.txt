@@ -1,0 +1,6 @@
+webinar
+https://gbcdn.mrgcdn.ru/uploads/record/213136/attachment/d11ec568cbca1332a66656563851f1bd.mp4
+
+https://vas3k.ru/blog/machine_learning/ - все про машинное обучение
+https://www.kaggle.com/datasets/uciml/red-wine-quality-cortez-et-al-2009 - примером с качеством вина
+https://towardsdatascience.com/14-data-science-projects-to-do-during-your-14-day-quarantine-8bd60d1e55e1 - 14 интересных проектов по анализу
