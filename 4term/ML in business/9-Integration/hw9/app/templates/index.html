@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block body %}
+    <p>
+        <a href="{{ url_for('about') }}"> Особенности проекта </a>
+    </p>
+    <h2> Использование</h2>
+    <p>
+        Тестирование модели можно провести в 3-х режимах:
+    </p>
+    <ul>
+        <li>
+            Загрузка произвольного файла измерений пульса на сервер в формате, указанном в разделе
+            <a href="{{ url_for('about') }}"> о проекте</a>. Для этого нажмите кнопку <strong>Выберите файл</strong>.
+        </li>
+        <li>
+            Загрузка предварительно подготовленного файла в столбце <strong> Набор данных</strong>.
+        </li>
+        <li>
+            Тестирование набора данных непосредственно на сервере, используя ссылки в разделе <strong>Анализ на
+            сервере</strong>.
+        </li>
+
+    </ul>
+
+    <table class="predict">
+        <tr>
+            <th> Набор данных</th>
+            <th> Анализ на сервере</th>
+            <th> Результат</th>
+        </tr>
+        <tr>
+            <td><a href="{{ url_for('files', filename = 'patient_1_non_anomaly.csv') }}">Пациент 1</a></td>
+            <td><a href="{{ url_for('test_pat',id = 1) }}">Тестирование пациент1 </a> <br> предварительно<br>
+                отрицательный
+            </td>
+            <td><span>{{ result_pat1 }}</span></td>
+        </tr>
+        <tr>
+            <td><a href="{{ url_for('files', filename = 'patient_2_anomaly.csv') }}">Пациент 2</a></td>
+            <td><a href="{{ url_for('test_pat',id = 2) }}">Тестирование пациент2</a> <br> предварительно<br>
+                положительный
+            </td>
+            <td><span>{{ result_pat2 }}</span></td>
+        </tr>
+        <tr>
+            <td><a href="{{ url_for('files', filename = 'patient_3_anomaly.csv') }}">Пациент 3</a></td>
+            <td><a href="{{ url_for('test_pat',id = 3) }}">Тестирование пациент3</a> <br> предварительно<br>
+                положительный
+            </td>
+            <td><span>{{ result_pat3 }}</span></td>
+        </tr>
+
+        <tr>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+
+        </tr>
+        <tr>
+            <td>
+                {% if is_home %}
+                    <form method=post enctype=multipart/form-data>
+                        <input type=file name=file>
+                        <input type=submit value=Upload formaction="{{ url_for('index') }}">
+                    </form>
+                {% else %}
+                    <a href="{{ url_for('index') }}"> Загрузить файл </a>
+                {% endif %}
+            </td>
+            <td>Анализ загруженного файла</td>
+            <td><span>{{ result_pat4 }}</span></td>
+        </tr>
+    </table>
+
+    <p>
+        Предсказания модели отражается в столбце <strong>Результат</strong>
+    </p>
+
+    <ul>
+        <li>
+            <i>Результат</i> - общий предсказанный результат (положительный/отрицательный)
+        </li>
+        <li>
+            <i>Количество аномалий</i> - подсчет общего количества фрагментов, которые модель пометила
+        </li>
+        <li>
+            <i>Показатель</i> - среднее количество аномалий за единицу измерений
+        </li>
+    </ul>
+{% endblock %}

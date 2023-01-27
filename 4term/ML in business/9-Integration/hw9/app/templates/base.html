@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Проект ML по определению анномалий COVID-19</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="yandex-verification" content="2844193044be4c41" />
+</head>
+<body>
+<table>
+    <tr>
+        <td>&nbsp;</td>
+        <td><h1>Разработка детектора COVID-19 аномалий в ритме сердца</h1></td>
+    </tr>
+</table>
+
+<p>Разработанная модель на оcнове методов ML (машинного обучения) находит специфичные для COVID-19 аномалии в измерениях сердечного ритма человека</p>
+<p>
+    <img class="series" src="{{ url_for('static', filename = 'CardioSpike.png') }}" alt="">
+</p>
+{% block body %}
+{% endblock %}
+</body>
+</html>
