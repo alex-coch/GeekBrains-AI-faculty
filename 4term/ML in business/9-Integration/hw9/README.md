@@ -4,15 +4,15 @@
 ### Клонируем репозиторий и создаем образ
 ```
 $ git clone git@github.com:alex-coch/GeekBrains-AI-faculty.git
-$ cd GB_docker_flask_example
-$ docker build -t fimochka/gb_docker_flask_example .
+$ cd "4term/ML in business/9-Integration/hw9/"
+$ docker build -t task9/gb_docker_flask_example .
 ```
 
 ### Запускаем контейнер
 
 Здесь Вам нужно создать каталог локально и сохранить туда предобученную модель (<your_local_path_to_pretrained_models> нужно заменить на полный путь к этому каталогу)
 ```
-$ docker run -d -p 8180:8180 -p 8181:8181 -v <your_local_path_to_pretrained_models>:/app/app/models fimochka/gb_docker_flask_example
+$ docker run -d -p 8180:8180 -p 8181:8181 -v <your_local_path_to_pretrained_models>:/app/app/models task9/gb_docker_flask_example
 ```
 
 ### Переходим на localhost:8181
@@ -34,9 +34,8 @@ $ docker run -d -p 8180:8180 -p 8181:8181 -v <your_local_path_to_pretrained_mode
 - Кодирование в utf-8 - ``str.encode('utf-8')``
 
 ### Основные компоненты системы:
-- ``task09.ipynb`` - исходное задание на курсовую работу
 - ``EDA_and_learning_model/CardioSpike2.ipynb`` - EDA и создание модели.
-- ``requirements_prod.txt`` - необходимые компоненты для установки на сервер 
+- ``requirements.txt`` - необходимые компоненты для установки на сервер 
 - ``app/run_server.py`` - запуск сервера на основе Flask
 - ``pipeline.py`` - пайплайн предобработки и постобработки данных. 
 - ``app/model/dill_clf_model.dill`` - реализованная модель
