@@ -2,3 +2,6 @@ https://github.com/fds-git/GeekBrains/blob/master/megafon_kur/DFedorovProject.ip
 https://github.com/alex-kalinichenko/gb/tree/e9e8fa621505401b981ab0466d5fb1269ac4cc7c/megafon/final_project
 ! https://github.com/Shmanov/Megafon/tree/e8de7730ea19d4721fe70c8517dd8d12fc102b89
 https://github.com/SLVmain/Megafon_project/tree/e35c4a698c5da42adc7aeafd5f3a67b0b1620683
+
+features
+https://drive.google.com/file/d/19kgKx63LB-YT2kPIioOtS7ZVrY7zw4BO/view
